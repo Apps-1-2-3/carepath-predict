@@ -36,12 +36,12 @@ export function riskDistribution(patients: Patient[]) {
 }
 
 export function segments(patients: Patient[]) {
-  const counts = { Low: 0, Medium: 0, High: 0 } as Record<string, number>;
-  for (const p of patients) counts[p.riskLevel]++;
+  const counts: Record<"Low" | "Medium" | "High", number> = { Low: 0, Medium: 0, High: 0 };
+  for (const p of patients) counts[p.riskLevel] += 1;
   return [
-    { name: "Low Risk", value: counts.Low!, key: "Low" },
-    { name: "Medium Risk", value: counts.Medium!, key: "Medium" },
-    { name: "High Risk", value: counts.High!, key: "High" },
+    { name: "Low Risk", value: counts.Low, key: "Low" },
+    { name: "Medium Risk", value: counts.Medium, key: "Medium" },
+    { name: "High Risk", value: counts.High, key: "High" },
   ];
 }
 
